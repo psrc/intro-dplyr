@@ -1,0 +1,8 @@
+name: Intro to dplyr at PSRC
+navbar:
+  title: Intro to dplyr
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
