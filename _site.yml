@@ -6,3 +6,7 @@ navbar:
       href: index.html
     - text: "Lesson One"
       href: 01-module.html
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
