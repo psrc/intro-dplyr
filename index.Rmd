@@ -14,6 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## What is dplyr?
 
+From [the tidyverse website](https://dplyr.tidyverse.org/)
 
 dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:
 

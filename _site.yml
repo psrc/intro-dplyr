@@ -3,6 +3,6 @@ navbar:
   title: Intro to dplyr
   left:
     - text: "Home"
-      href: index.html
+      href: _site\index.html
     - text: "First Module"
-      href: 01-module.html
+      href: _site\01-module.html
