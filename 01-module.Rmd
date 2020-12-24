@@ -2,7 +2,10 @@
 title: "Intro to dplyr"
 author: "Suzanne Childress"
 date: "12/23/2020"
-output: html_document
+output:
+  html_document:
+    theme: cosmo
+    highlight: textmate
 
 ---
 

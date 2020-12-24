@@ -1,9 +1,8 @@
-name: Intro to dplyr at PSRC
+name: "intro-dplyr"
 navbar:
-  title: Intro to dplyr
+  title: "Introduction to R library dplyr for data manipulation and summarization"
   left:
     - text: "Home"
       href: index.html
-    - text: "First Lesson"
+    - text: "Lesson One"
       href: 01-module.html
-
