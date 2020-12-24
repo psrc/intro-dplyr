@@ -4,3 +4,6 @@ navbar:
   left:
     - text: "Home"
       href: index.html
+    - text: "First Lesson"
+      href: 01-module.html
+
