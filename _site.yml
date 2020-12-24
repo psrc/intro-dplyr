@@ -4,5 +4,3 @@ navbar:
   left:
     - text: "Home"
       href: index.html
-    - text: "First Module"
-      href: 01-module.html
