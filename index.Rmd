@@ -13,11 +13,42 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+# Prerequisites
+R and the RStudio IDE are required. 
+
+Please install the following libraries by running the following code snippet in the console of your RStudio IDE. Ignore any warnings regarding Rtools and if you are asked to install from sources which needs compilation, click 'No'.
+
+install.packages(c("tidyr"))
+install.packages(c("stringr"))
+install.packages(c("dplyr"))
+
+The code that is used in this class can be found at [on github here](https://github.com/psrc/intro-dplyr/scripts/dplyr_class_script.R)
+
+I recommend opening this script in R studio while the class is going so you can easily follow along.
+
 ## What is dplyr?
+
+[From a dplyr vignette](https://rdrr.io/github/hadley/dplyr/f/vignettes/dplyr.Rmd):
+
+When working with data you must:
+
+* Figure out what you want to do.
+
+* Describe those tasks in the form of a computer program.
+
+*Execute the program.
+
+The dplyr package makes these steps fast and easy:
+
+By constraining your options, it helps you think about your data manipulation challenges.
+
+It provides simple “verbs”, functions that correspond to the most common data manipulation tasks, to help you translate your thoughts into code.
+
+It uses efficient backends, so you spend less time waiting for the computer.
+
 
 From [the tidyverse website](https://dplyr.tidyverse.org/):
 
-dplyr is a grammar of data manipulation, providing a consistent set of verbs that help you solve the most common data manipulation challenges:
 
 * mutate() adds new variables that are functions of existing variables
 * select() picks variables based on their names.
@@ -30,8 +61,12 @@ These all combine naturally with group_by() which allows you to perform any oper
 
 
 
-## Topics
+## Topics in the Class
 
-1.  [First Lesson](01-module.html)
-
+1.  [King County Restaurant Data](01-rest-data.html)
+2.  [Basic Verbs: Mutate, Select, Filter Arrange](02-basic-verbs.html)
+3.  [Grouping and Summarizing](03-group-by-summarize.html)
+4.  [Wrangling our Restaurant Data](04-data-wrangle.html)
+5.  [Playing with the Data](05-play-with-data.html)
+6.  [Appendix: Code Results](06-results-running.html)
 

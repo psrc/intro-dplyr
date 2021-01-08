@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Suzanne Childress" />
+
+
+<title>Script Results</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Introduction to the R library dplyr for data manipulation and summarization</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="01-rest-data.html">King County Restaurant Data</a>
+</li>
+<li>
+  <a href="02-basic-verbs.html">Basic Verbs</a>
+</li>
+<li>
+  <a href="03-group-by-summarize.html">Grouping and Summarizing</a>
+</li>
+<li>
+  <a href="04-data-wrangle.html">Data Wrangling</a>
+</li>
+<li>
+  <a href="05-play-with-data.html">Playing with the Data</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Script Results</h1>
+<h4 class="author">Suzanne Childress</h4>
+<h4 class="date">1/8/2021</h4>
+
+</div>
+
+
+<p>This shows the results of running all the steps of the class.</p>
+<pre class="r"><code>library(dplyr)</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 3.6.3</code></pre>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code>library(stringr)
+library(tidyr)</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.3</code></pre>
+<pre class="r"><code>#### Restaurant Inspection Data ####
+
+restaurant_file&lt;-&#39;C:/Users/SChildress/Documents/GitHub/intro-dplyr/data/king_county_restaurant_inspections.csv&#39;
+rest_df&lt;-read.csv(restaurant_file, fileEncoding = &#39;UTF-8-BOM&#39;)
+# find the dimensions of the data frame
+dim(rest_df)</code></pre>
+<pre><code>## [1] 267167     15</code></pre>
+<pre class="r"><code>#look at the first five rows
+head(rest_df)</code></pre>
+<pre><code>##   OBJECTID FEATURE_ID                        NAME PROGRAM_IDENTIFIER
+## 1        1          1 ARAMARK  @ CONVENTION PLACE             FLEX B
+## 2        2          2 ARAMARK  @ CONVENTION PLACE             FLEX B
+## 3        3          3 ARAMARK  @ CONVENTION PLACE             FLEX B
+## 4        4          4 ARAMARK  @ CONVENTION PLACE             FLEX B
+## 5        5          5 ARAMARK  @ CONVENTION PLACE             FLEX B
+## 6        6          6                  A &amp; B CAFE         A &amp; B CAFE
+##        SEAT_CAP RISK ZIPCODE    CITY        DATE_INSPECTION
+## 1 Seating 13-50   II   98101 Seattle 2017/10/27 00:00:00+00
+## 2 Seating 13-50   II   98101 Seattle 2018/09/24 00:00:00+00
+## 3 Seating 13-50   II   98101 Seattle 2016/08/30 00:00:00+00
+## 4 Seating 13-50   II   98101 Seattle 2019/04/19 00:00:00+00
+## 5 Seating 13-50   II   98101 Seattle 2018/04/17 00:00:00+00
+## 6 Seating 13-50  III   98104 Seattle 2015/11/04 00:00:00+00
+##                   TYPE_INSPECTION SCORE_INSPECTION RESULT_INSPECTION
+## 1 Routine Inspection/Field Review                0      Satisfactory
+## 2  Consultation/Education - Field                0          Complete
+## 3  Consultation/Education - Field                0          Complete
+## 4 Routine Inspection/Field Review                0      Satisfactory
+## 5 Routine Inspection/Field Review                0      Satisfactory
+## 6 Routine Inspection/Field Review               90    Unsatisfactory
+##   VIOLATIONTYPE
+## 1              
+## 2              
+## 3              
+## 4              
+## 5              
+## 6           RED
+##                                                              VIOLATIONDESCR
+## 1                                                                          
+## 2                                                                          
+## 3                                                                          
+## 4                                                                          
+## 5                                                                          
+## 6 1400 - Raw meats below and away from ready to eat food; species separated
+##   VIOLATIONPOINTS
+## 1              NA
+## 2              NA
+## 3              NA
+## 4              NA
+## 5              NA
+## 6               5</code></pre>
+<pre class="r"><code>#what are the column names
+colnames(rest_df)</code></pre>
+<pre><code>##  [1] &quot;OBJECTID&quot;           &quot;FEATURE_ID&quot;         &quot;NAME&quot;              
+##  [4] &quot;PROGRAM_IDENTIFIER&quot; &quot;SEAT_CAP&quot;           &quot;RISK&quot;              
+##  [7] &quot;ZIPCODE&quot;            &quot;CITY&quot;               &quot;DATE_INSPECTION&quot;   
+## [10] &quot;TYPE_INSPECTION&quot;    &quot;SCORE_INSPECTION&quot;   &quot;RESULT_INSPECTION&quot; 
+## [13] &quot;VIOLATIONTYPE&quot;      &quot;VIOLATIONDESCR&quot;     &quot;VIOLATIONPOINTS&quot;</code></pre>
+<pre class="r"><code>glimpse(rest_df)</code></pre>
+<pre><code>## Rows: 267,167
+## Columns: 15
+## $ OBJECTID           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, ...
+## $ FEATURE_ID         &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, ...
+## $ NAME               &lt;fct&gt; ARAMARK  @ CONVENTION PLACE, ARAMARK  @ CON...
+## $ PROGRAM_IDENTIFIER &lt;fct&gt; FLEX B, FLEX B, FLEX B, FLEX B, FLEX B, A &amp;...
+## $ SEAT_CAP           &lt;fct&gt; Seating 13-50, Seating 13-50, Seating 13-50...
+## $ RISK               &lt;fct&gt; II, II, II, II, II, III, III, III, III, III...
+## $ ZIPCODE            &lt;int&gt; 98101, 98101, 98101, 98101, 98101, 98104, 9...
+## $ CITY               &lt;fct&gt; Seattle, Seattle, Seattle, Seattle, Seattle...
+## $ DATE_INSPECTION    &lt;fct&gt; 2017/10/27 00:00:00+00, 2018/09/24 00:00:00...
+## $ TYPE_INSPECTION    &lt;fct&gt; Routine Inspection/Field Review, Consultati...
+## $ SCORE_INSPECTION   &lt;int&gt; 0, 0, 0, 0, 0, 90, 90, 90, 90, 90, 90, 90, ...
+## $ RESULT_INSPECTION  &lt;fct&gt; Satisfactory, Complete, Complete, Satisfact...
+## $ VIOLATIONTYPE      &lt;fct&gt; , , , , , RED, RED, RED, RED, BLUE, BLUE, B...
+## $ VIOLATIONDESCR     &lt;fct&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;1400 - Raw meats below...
+## $ VIOLATIONPOINTS    &lt;int&gt; NA, NA, NA, NA, NA, 5, 25, 25, 15, 5, 5, 5,...</code></pre>
+<pre class="r"><code>#### Basic dplyr verbs ####
+
+# mutate() adds new variables that are functions of existing variables
+# I&#39;m going to add a new variable which is the year.
+# Notice how I am using a %&gt;% to use the mutate function on the rest_df.
+
+rest_df &lt;- rest_df %&gt;% mutate(&#39;SEATTLE&#39;= if_else(CITY==&#39;Seattle&#39;, &#39;Seattle&#39;, &#39;Not Seattle&#39;))
+
+# select() picks variables based on their names.
+less_columns_df &lt;- rest_df %&gt;% select(&#39;NAME&#39;, &#39;SEAT_CAP&#39;, &#39;VIOLATIONTYPE&#39;)
+head(less_columns_df)</code></pre>
+<pre><code>##                          NAME      SEAT_CAP VIOLATIONTYPE
+## 1 ARAMARK  @ CONVENTION PLACE Seating 13-50              
+## 2 ARAMARK  @ CONVENTION PLACE Seating 13-50              
+## 3 ARAMARK  @ CONVENTION PLACE Seating 13-50              
+## 4 ARAMARK  @ CONVENTION PLACE Seating 13-50              
+## 5 ARAMARK  @ CONVENTION PLACE Seating 13-50              
+## 6                  A &amp; B CAFE Seating 13-50           RED</code></pre>
+<pre class="r"><code># filter() picks cases based on their values.
+biz_df &lt;- rest_df %&gt;% dplyr::filter(str_detect(NAME, &#39;BIZ&#39;))
+bizzaro_df &lt;- rest_df %&gt;% dplyr::filter(str_detect(NAME, &#39;BIZZARRO&#39;))
+head(bizzaro_df)</code></pre>
+<pre><code>##   OBJECTID FEATURE_ID                  NAME    PROGRAM_IDENTIFIER
+## 1    23407      23475 BIZZARRO ITALIAN CAFE BIZZARRO ITALIAN CAFE
+## 2    23408      23476 BIZZARRO ITALIAN CAFE BIZZARRO ITALIAN CAFE
+## 3    23409      23477 BIZZARRO ITALIAN CAFE BIZZARRO ITALIAN CAFE
+## 4    23410      23478 BIZZARRO ITALIAN CAFE BIZZARRO ITALIAN CAFE
+## 5    23411      23479 BIZZARRO ITALIAN CAFE BIZZARRO ITALIAN CAFE
+## 6    23412      23480 BIZZARRO ITALIAN CAFE BIZZARRO ITALIAN CAFE
+##        SEAT_CAP RISK ZIPCODE    CITY        DATE_INSPECTION
+## 1 Seating 13-50  III   98103 Seattle 2019/12/19 00:00:00+00
+## 2 Seating 13-50  III   98103 Seattle 2018/12/14 00:00:00+00
+## 3 Seating 13-50  III   98103 Seattle 2009/12/10 00:00:00+00
+## 4 Seating 13-50  III   98103 Seattle 2009/12/10 00:00:00+00
+## 5 Seating 13-50  III   98103 Seattle 2009/12/10 00:00:00+00
+## 6 Seating 13-50  III   98103 Seattle 2017/12/07 00:00:00+00
+##                   TYPE_INSPECTION SCORE_INSPECTION RESULT_INSPECTION
+## 1 Routine Inspection/Field Review                0      Satisfactory
+## 2  Consultation/Education - Field                0          Complete
+## 3 Routine Inspection/Field Review               40    Unsatisfactory
+## 4 Routine Inspection/Field Review               40    Unsatisfactory
+## 5 Routine Inspection/Field Review               40    Unsatisfactory
+## 6 Routine Inspection/Field Review               25    Unsatisfactory
+##   VIOLATIONTYPE
+## 1              
+## 2              
+## 3           RED
+## 4           RED
+## 5           RED
+## 6           RED
+##                                                                      VIOLATIONDESCR
+## 1                                                                                  
+## 2                                                                                  
+## 3                         1200 - Proper shellfish identification; proper parasit...
+## 4                                  0200 - Food Worker Cards current for all food...
+## 5                                                   1600 - Proper cooling procedure
+## 6 0500 - Proper barriers used to prevent bare hand contact with ready to eat foods.
+##   VIOLATIONPOINTS SEATTLE
+## 1              NA Seattle
+## 2              NA Seattle
+## 3               5 Seattle
+## 4               5 Seattle
+## 5              30 Seattle
+## 6              25 Seattle</code></pre>
+<pre class="r"><code># you can stack the two operations together; like nesting a function
+
+less_col_biz &lt;- rest_df %&gt;% select(&#39;NAME&#39;, &#39;VIOLATIONTYPE&#39;, &#39;VIOLATIONDESCR&#39;) %&gt;%  dplyr::filter(str_detect(NAME, &#39;BIZZARRO&#39;))
+head(less_col_biz)</code></pre>
+<pre><code>##                    NAME VIOLATIONTYPE
+## 1 BIZZARRO ITALIAN CAFE              
+## 2 BIZZARRO ITALIAN CAFE              
+## 3 BIZZARRO ITALIAN CAFE           RED
+## 4 BIZZARRO ITALIAN CAFE           RED
+## 5 BIZZARRO ITALIAN CAFE           RED
+## 6 BIZZARRO ITALIAN CAFE           RED
+##                                                                      VIOLATIONDESCR
+## 1                                                                                  
+## 2                                                                                  
+## 3                         1200 - Proper shellfish identification; proper parasit...
+## 4                                  0200 - Food Worker Cards current for all food...
+## 5                                                   1600 - Proper cooling procedure
+## 6 0500 - Proper barriers used to prevent bare hand contact with ready to eat foods.</code></pre>
+<pre class="r"><code># arrange() changes the ordering of the rows.
+# the default is ascending order, if you want descending use: desc
+ordered_df &lt;- bizzaro_df%&gt;% arrange(desc(SCORE_INSPECTION))
+head(ordered_df)</code></pre>
+<pre><code>##   OBJECTID FEATURE_ID                  NAME    PROGRAM_IDENTIFIER
+## 1    23409      23477 BIZZARRO ITALIAN CAFE BIZZARRO ITALIAN CAFE
+## 2    23410      23478 BIZZARRO ITALIAN CAFE BIZZARRO ITALIAN CAFE
+## 3    23411      23479 BIZZARRO ITALIAN CAFE BIZZARRO ITALIAN CAFE
+## 4    23418      23486 BIZZARRO ITALIAN CAFE BIZZARRO ITALIAN CAFE
+## 5    23419      23487 BIZZARRO ITALIAN CAFE BIZZARRO ITALIAN CAFE
+## 6    23426      23494 BIZZARRO ITALIAN CAFE BIZZARRO ITALIAN CAFE
+##        SEAT_CAP RISK ZIPCODE    CITY        DATE_INSPECTION
+## 1 Seating 13-50  III   98103 Seattle 2009/12/10 00:00:00+00
+## 2 Seating 13-50  III   98103 Seattle 2009/12/10 00:00:00+00
+## 3 Seating 13-50  III   98103 Seattle 2009/12/10 00:00:00+00
+## 4 Seating 13-50  III   98103 Seattle 2014/09/30 00:00:00+00
+## 5 Seating 13-50  III   98103 Seattle 2014/09/30 00:00:00+00
+## 6 Seating 13-50  III   98103 Seattle 2015/07/28 00:00:00+00
+##                   TYPE_INSPECTION SCORE_INSPECTION RESULT_INSPECTION
+## 1 Routine Inspection/Field Review               40    Unsatisfactory
+## 2 Routine Inspection/Field Review               40    Unsatisfactory
+## 3 Routine Inspection/Field Review               40    Unsatisfactory
+## 4 Routine Inspection/Field Review               35    Unsatisfactory
+## 5 Routine Inspection/Field Review               35    Unsatisfactory
+## 6 Routine Inspection/Field Review               30    Unsatisfactory
+##   VIOLATIONTYPE
+## 1           RED
+## 2           RED
+## 3           RED
+## 4           RED
+## 5           RED
+## 6           RED
+##                                                         VIOLATIONDESCR
+## 1            1200 - Proper shellfish identification; proper parasit...
+## 2                     0200 - Food Worker Cards current for all food...
+## 3                                      1600 - Proper cooling procedure
+## 4            1900 - No room temperature storage; proper use of time...
+## 5 2110 - Proper cold holding temperatures (greater than  45 degrees F)
+## 6                                      1600 - Proper cooling procedure
+##   VIOLATIONPOINTS SEATTLE
+## 1               5 Seattle
+## 2               5 Seattle
+## 3              30 Seattle
+## 4              25 Seattle
+## 5              10 Seattle
+## 6              25 Seattle</code></pre>
+<pre class="r"><code>#### Group by and Summarize ####
+
+# Let&#39;s count the records in our data.
+
+rest_df_count &lt;- rest_df %&gt;% count()
+rest_df_count</code></pre>
+<pre><code>##        n
+## 1 267167</code></pre>
+<pre class="r"><code># Now let&#39;s count the number of observations for each restaurant.
+
+rest_df_count2 &lt;- rest_df %&gt;% count(NAME)
+head(rest_df_count2)</code></pre>
+<pre><code>##                         NAME  n
+## 1                A-CHAU CAFE 65
+## 2               A-PIZZA MART 53
+## 3     A-STREET BIG FOOT JAVA 12
+## 4                 A &amp; B CAFE 48
+## 5        A &amp; S PETROLEUM LCC 27
+## 6 A BAO TIME LLC DBA Phorale 35</code></pre>
+<pre class="r"><code>rest_df_count_sort&lt;-rest_df %&gt;% count(NAME,sort=TRUE)
+head(rest_df_count_sort)</code></pre>
+<pre><code>##                    NAME    n
+## 1         T-MOBILE PARK 1977
+## 2             TACO TIME 1160
+## 3                SUBWAY 1049
+## 4    WHOLE FOODS MARKET  972
+## 5 PCC COMMUNITY MARKETS  832
+## 6      STARBUCKS COFFEE  736</code></pre>
+<pre class="r"><code>#### Data Wrangling ####
+
+# I want to find out the unique values of the type of inspections
+
+unique(rest_df$TYPE_INSPECTION)</code></pre>
+<pre><code>## [1] Routine Inspection/Field Review Consultation/Education - Field 
+## [3] Return Inspection              
+## 3 Levels: Consultation/Education - Field ... Routine Inspection/Field Review</code></pre>
+<pre class="r"><code>glimpse(rest_df)</code></pre>
+<pre><code>## Rows: 267,167
+## Columns: 16
+## $ OBJECTID           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, ...
+## $ FEATURE_ID         &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, ...
+## $ NAME               &lt;fct&gt; ARAMARK  @ CONVENTION PLACE, ARAMARK  @ CON...
+## $ PROGRAM_IDENTIFIER &lt;fct&gt; FLEX B, FLEX B, FLEX B, FLEX B, FLEX B, A &amp;...
+## $ SEAT_CAP           &lt;fct&gt; Seating 13-50, Seating 13-50, Seating 13-50...
+## $ RISK               &lt;fct&gt; II, II, II, II, II, III, III, III, III, III...
+## $ ZIPCODE            &lt;int&gt; 98101, 98101, 98101, 98101, 98101, 98104, 9...
+## $ CITY               &lt;fct&gt; Seattle, Seattle, Seattle, Seattle, Seattle...
+## $ DATE_INSPECTION    &lt;fct&gt; 2017/10/27 00:00:00+00, 2018/09/24 00:00:00...
+## $ TYPE_INSPECTION    &lt;fct&gt; Routine Inspection/Field Review, Consultati...
+## $ SCORE_INSPECTION   &lt;int&gt; 0, 0, 0, 0, 0, 90, 90, 90, 90, 90, 90, 90, ...
+## $ RESULT_INSPECTION  &lt;fct&gt; Satisfactory, Complete, Complete, Satisfact...
+## $ VIOLATIONTYPE      &lt;fct&gt; , , , , , RED, RED, RED, RED, BLUE, BLUE, B...
+## $ VIOLATIONDESCR     &lt;fct&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;1400 - Raw meats below...
+## $ VIOLATIONPOINTS    &lt;int&gt; NA, NA, NA, NA, NA, 5, 25, 25, 15, 5, 5, 5,...
+## $ SEATTLE            &lt;chr&gt; &quot;Seattle&quot;, &quot;Seattle&quot;, &quot;Seattle&quot;, &quot;Seattle&quot;,...</code></pre>
+<pre class="r"><code># The DATE_INSPECTION FIELD is a factor, but we want it to be a date so we filter on it.
+
+rest_df &lt;- rest_df %&gt;% mutate(DATE_INSP_FORMAT=as.Date(word(as.character(DATE_INSPECTION), 1)))
+
+#let&#39;s check to see that now the DATE_INSP_FORMAT field looks like a date and is okay
+glimpse(rest_df)</code></pre>
+<pre><code>## Rows: 267,167
+## Columns: 17
+## $ OBJECTID           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, ...
+## $ FEATURE_ID         &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, ...
+## $ NAME               &lt;fct&gt; ARAMARK  @ CONVENTION PLACE, ARAMARK  @ CON...
+## $ PROGRAM_IDENTIFIER &lt;fct&gt; FLEX B, FLEX B, FLEX B, FLEX B, FLEX B, A &amp;...
+## $ SEAT_CAP           &lt;fct&gt; Seating 13-50, Seating 13-50, Seating 13-50...
+## $ RISK               &lt;fct&gt; II, II, II, II, II, III, III, III, III, III...
+## $ ZIPCODE            &lt;int&gt; 98101, 98101, 98101, 98101, 98101, 98104, 9...
+## $ CITY               &lt;fct&gt; Seattle, Seattle, Seattle, Seattle, Seattle...
+## $ DATE_INSPECTION    &lt;fct&gt; 2017/10/27 00:00:00+00, 2018/09/24 00:00:00...
+## $ TYPE_INSPECTION    &lt;fct&gt; Routine Inspection/Field Review, Consultati...
+## $ SCORE_INSPECTION   &lt;int&gt; 0, 0, 0, 0, 0, 90, 90, 90, 90, 90, 90, 90, ...
+## $ RESULT_INSPECTION  &lt;fct&gt; Satisfactory, Complete, Complete, Satisfact...
+## $ VIOLATIONTYPE      &lt;fct&gt; , , , , , RED, RED, RED, RED, BLUE, BLUE, B...
+## $ VIOLATIONDESCR     &lt;fct&gt; &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;&quot;, &quot;1400 - Raw meats below...
+## $ VIOLATIONPOINTS    &lt;int&gt; NA, NA, NA, NA, NA, 5, 25, 25, 15, 5, 5, 5,...
+## $ SEATTLE            &lt;chr&gt; &quot;Seattle&quot;, &quot;Seattle&quot;, &quot;Seattle&quot;, &quot;Seattle&quot;,...
+## $ DATE_INSP_FORMAT   &lt;date&gt; 2017-10-27, 2018-09-24, 2016-08-30, 2019-0...</code></pre>
+<pre class="r"><code>rest_df&lt;-rest_df %&gt;% dplyr::mutate(VIOLATIONPOINTS = replace_na(VIOLATIONPOINTS, 0))
+
+rest_df_filtered &lt;- rest_df %&gt;% filter(TYPE_INSPECTION==&#39;Routine Inspection/Field Review&#39;) %&gt;%
+  group_by(NAME) %&gt;% 
+  filter(DATE_INSP_FORMAT == max(DATE_INSP_FORMAT)) %&gt;% 
+  slice(which.max(VIOLATIONPOINTS))
+
+#### Playing with the Data ####
+glimpse(rest_df_filtered)</code></pre>
+<pre><code>## Rows: 8,961
+## Columns: 17
+## Groups: NAME [8,961]
+## $ OBJECTID           &lt;int&gt; 911, 8306, 11138, 26, 77, 13518, 82, 92, 11...
+## $ FEATURE_ID         &lt;int&gt; 914, 8336, 11173, 26, 77, 13562, 82, 92, 11...
+## $ NAME               &lt;fct&gt; &quot;A-CHAU CAFE&quot;, &quot;A-PIZZA MART&quot;, &quot;A-STREET BI...
+## $ PROGRAM_IDENTIFIER &lt;fct&gt; &quot;A-CHAU CAFE&quot;, &quot;A-PIZZA MART&quot;, &quot;A-STREET BI...
+## $ SEAT_CAP           &lt;fct&gt; Seating 13-50, Seating 0-12, Seating 0-12, ...
+## $ RISK               &lt;fct&gt; III, III, I, III, III, III, III, III, III, ...
+## $ ZIPCODE            &lt;int&gt; 98118, 98126, 98002, 98104, 98028, 98134, 9...
+## $ CITY               &lt;fct&gt; Seattle, Seattle, Auburn, Seattle, Kenmore,...
+## $ DATE_INSPECTION    &lt;fct&gt; 2020/01/21 00:00:00+00, 2020/01/16 00:00:00...
+## $ TYPE_INSPECTION    &lt;fct&gt; Routine Inspection/Field Review, Routine In...
+## $ SCORE_INSPECTION   &lt;int&gt; 0, 0, 8, 15, 18, 50, 12, 10, 0, 30, 5, 60, ...
+## $ RESULT_INSPECTION  &lt;fct&gt; Satisfactory, Satisfactory, Satisfactory, U...
+## $ VIOLATIONTYPE      &lt;fct&gt; , , BLUE, RED, RED, RED, RED, RED, , RED, B...
+## $ VIOLATIONDESCR     &lt;fct&gt; &quot;&quot;, &quot;&quot;, &quot;3400 - Wiping cloths properly used...
+## $ VIOLATIONPOINTS    &lt;dbl&gt; 0, 0, 5, 5, 10, 25, 5, 5, 0, 25, 5, 25, 25,...
+## $ SEATTLE            &lt;chr&gt; &quot;Seattle&quot;, &quot;Seattle&quot;, &quot;Not Seattle&quot;, &quot;Seatt...
+## $ DATE_INSP_FORMAT   &lt;date&gt; 2020-01-21, 2020-01-16, 2019-10-22, 2019-0...</code></pre>
+<pre class="r"><code>#How do the inspection score vary by city?
+
+# Average and Max Score by City
+score_by_city&lt;-rest_df_filtered %&gt;% group_by(CITY) %&gt;% summarize(avg_score= mean(SCORE_INSPECTION),
+                                                                 max_score = max(SCORE_INSPECTION),
+                                                                 n_rests = n())</code></pre>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre class="r"><code>score_by_city</code></pre>
+<pre><code>## # A tibble: 51 x 4
+##    CITY          avg_score max_score n_rests
+##    &lt;fct&gt;             &lt;dbl&gt;     &lt;int&gt;   &lt;int&gt;
+##  1 (None)             5            5       1
+##  2 Algona             2.67        16       6
+##  3 Auburn             5.46        77     265
+##  4 Baring             0            0       1
+##  5 Bellevue           9.29       100     610
+##  6 Black Diamond      2.74        23      19
+##  7 Bothell           11.8         70      83
+##  8 Burien             4.21        50     148
+##  9 Carnation          0.5          5      26
+## 10 Clyde Hill         3.25        13       4
+## # ... with 41 more rows</code></pre>
+<pre class="r"><code># What is the info on the restaurant with the worst score by city?
+
+worst_by_city&lt;-rest_df_filtered %&gt;% group_by(CITY) %&gt;% top_n(1, SCORE_INSPECTION)
+
+worst_by_city</code></pre>
+<pre><code>## # A tibble: 60 x 17
+## # Groups:   CITY [51]
+##    OBJECTID FEATURE_ID NAME  PROGRAM_IDENTIF~ SEAT_CAP RISK  ZIPCODE CITY 
+##       &lt;int&gt;      &lt;int&gt; &lt;fct&gt; &lt;fct&gt;            &lt;fct&gt;    &lt;fct&gt;   &lt;int&gt; &lt;fct&gt;
+##  1     6675       6701 AMBA~ AMBAKITY COCINA~ Mobile ~ III     98002 Aubu~
+##  2     9442       9472 ARCH~ ARCHIE&#39;S MEXICA~ Seating~ III     98148 Norm~
+##  3    10794      10829 ASIA~ ASIAN PLANET FO~ Meat/Se~ III     98030 Kent 
+##  4    19610      19667 BEEC~ BEECHER&#39;S CHEES~ Seating~ III     98158 Seat~
+##  5    21729      21787 BEST~ BEST OF BOTH WO~ Mobile ~ III     98296 Snoh~
+##  6    22364      22426 BIG ~ BIG AIR BAR-B-Q~ Seating~ III     98045 Snoq~
+##  7    36490      36636 CASA~ CASA BONITA      Seating~ III     98070 Vash~
+##  8    36540      36686 CASA~ CASA DURANGO     Seating~ III     98148 Norm~
+##  9    37437      37588 CATH~ CATHOUSE KC422 ~ Mobile ~ III     98290 Snoh~
+## 10    46096      46269 COCO~ COCO JOE&#39;S       Seating~ III     98001 Algo~
+## # ... with 50 more rows, and 9 more variables: DATE_INSPECTION &lt;fct&gt;,
+## #   TYPE_INSPECTION &lt;fct&gt;, SCORE_INSPECTION &lt;int&gt;,
+## #   RESULT_INSPECTION &lt;fct&gt;, VIOLATIONTYPE &lt;fct&gt;, VIOLATIONDESCR &lt;fct&gt;,
+## #   VIOLATIONPOINTS &lt;dbl&gt;, SEATTLE &lt;chr&gt;, DATE_INSP_FORMAT &lt;date&gt;</code></pre>
+<pre class="r"><code># What was the data on the restaurant I liked?
+
+bizzaro_df_filtered &lt;- rest_df_filtered %&gt;% dplyr::filter(str_detect(NAME, &#39;BIZZARRO&#39;))
+bizzaro_df_filtered</code></pre>
+<pre><code>## # A tibble: 1 x 17
+## # Groups:   NAME [1]
+##   OBJECTID FEATURE_ID NAME  PROGRAM_IDENTIF~ SEAT_CAP RISK  ZIPCODE CITY 
+##      &lt;int&gt;      &lt;int&gt; &lt;fct&gt; &lt;fct&gt;            &lt;fct&gt;    &lt;fct&gt;   &lt;int&gt; &lt;fct&gt;
+## 1    23407      23475 BIZZ~ BIZZARRO ITALIA~ Seating~ III     98103 Seat~
+## # ... with 9 more variables: DATE_INSPECTION &lt;fct&gt;, TYPE_INSPECTION &lt;fct&gt;,
+## #   SCORE_INSPECTION &lt;int&gt;, RESULT_INSPECTION &lt;fct&gt;, VIOLATIONTYPE &lt;fct&gt;,
+## #   VIOLATIONDESCR &lt;fct&gt;, VIOLATIONPOINTS &lt;dbl&gt;, SEATTLE &lt;chr&gt;,
+## #   DATE_INSP_FORMAT &lt;date&gt;</code></pre>
+<pre class="r"><code># Your turn, ideas
+# 1. Find your a restaurant of your choice and get the latest data.
+# 2. Go back to the big dataset and find the worst violation of a restaurant you want.
+# 3. See if there is a relationship between the RISK category and the SCORE_INSPECTION
+# 4. See if there is a relationship between the SEAT_CAP and the SCORE_INSPECTION
+# 5. Find out which VIOLATIONDESCR is associated with the the highest SCORE_INSPECTION
+# 6. Or whatever you&#39;d like!!!</code></pre>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

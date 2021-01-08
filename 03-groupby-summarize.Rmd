@@ -1,0 +1,52 @@
+---
+title: "Grouping and Summarizing"
+author: "Suzanne Childress"
+date: "1/7/2021"
+output:
+  html_document:
+    highlight: textmate
+    theme: cosmo
+  pdf_document: default
+---
+
+
+Usually when working with data, we want to aggregate it to extract meaning. The most common ways to aggregate are to count, sum, min or max.
+
+
+```
+
+```{r, eval=FALSE}
+# Let's count the records in our data.
+
+rest_df_count <- rest_df %>% count()
+
+# Now let's count the number of observations for each restaurant.
+
+rest_df_count2 <- rest_df %>% count(NAME)
+
+rest_df %>% count(NAME,sort=TRUE)
+
+```
+
+Many times we need to sum data.
+summarise() creates a new data frame. It will have one (or more) rows for each combination of grouping variables; if there are no grouping variables, the output will have a single row summarising all observations in the input. It will contain one column for each grouping variable and one column for each of the summary statistics that you have specified.
+
+```{r, eval=FALSE}
+# Let's sum the inspection scores.
+
+rest_df %>% summarize(total_points=(sum(SCORE_INSPECTION, na.rm=TRUE)))
+
+```
+
+Frequently we also want to group data and summarize it:
+
+
+```{r, eval=FALSE}
+# Let's sum the inspection scores.
+
+rest_df %>% group_by(NAME)%>%summarize(rest_points=(mean(SCORE_INSPECTION, na.rm=TRUE)))
+
+```
+
+
+

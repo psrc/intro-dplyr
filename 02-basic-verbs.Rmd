@@ -1,0 +1,45 @@
+---
+title: "Basic Verbs"
+author: "Suzanne Childress"
+date: "1/6/2021"
+output:
+  html_document:
+    highlight: textmate
+    theme: cosmo
+  pdf_document: default
+---
+
+# What in the world is %>%? Understanding pipes. 
+
+magrittr pipes look like this: %>%. They are a way of calling functions that easily pass the result of one function into another. It makes your code cleaner, and it kind of feels like you're reading a sentence that expalins what you are doing to the data.
+
+Let's look at example over in this [blog](https://blog.revolutionanalytics.com/2014/07/magrittr-simplifying-r-code-with-pipes.html).
+
+
+
+# Now let's learn about several basic verbs: ***mutate, select, filter, and arrange.***
+
+```{r, eval=FALSE}
+# mutate() adds new variables that are functions of existing variables
+# I'm going to add a new variable which is the year.
+# Notice how I am using a %>% to use the mutate function on the rest_df.
+
+rest_df <- rest_df %>% mutate('SEATTLE'= if_else(CITY=='Seattle', 'Seattle', 'Not Seattle'))
+
+# select() picks variables based on their names.
+less_columns_df <- rest_df %>% select('NAME', 'SEAT_CAP', 'VIOLATIONTYPE')
+
+# filter() picks cases based on their values.
+biz_df <- rest_df %>% dplyr::filter(str_detect(NAME, 'BIZ'))
+bizzaro_df <- rest_df %>% dplyr::filter(str_detect(NAME, 'BIZZARRO'))
+
+# you can stack the two operations together; like nesting a function
+
+less_col_biz <- rest_df %>% select('NAME', 'VIOLATIONTYPE', 'VIOLATIONDESCR') %>%  dplyr::filter(str_detect(NAME, 'BIZZARRO'))
+
+# arrange() changes the ordering of the rows.
+# the default is ascending order, if you want descending use: desc
+ordered_df <- less_col_red%>% arrange(desc(SCORE_INSPECTION))
+```
+
+Now it's your turn to try, try to filter a restaurant you know, and select three columns you are interested in, then order descending by the inspection score.

@@ -1,0 +1,57 @@
+---
+title: "Restaurant Data"
+author: "Suzanne Childress"
+date: "12/23/2020"
+output:
+  html_document:
+    highlight: textmate
+    theme: cosmo
+  pdf_document: default
+---
+
+
+# Restaurant Data
+## Let's get read in some fun data to play round with.
+I found this data from Seattle open data portal about [Restaurant Inspections](https://gis-kingcounty.opendata.arcgis.com/datasets/9b1f71cb62c040ad9537e3c7e8578ed5_857/data?geometry=-127.218%2C46.233%2C-116.386%2C48.828).
+
+I moved the data locally so it would be faster to read in. The file is about 50 MB.
+I like to put file locations at the top of the code so people don't have to hunt to find them when
+reusing your code. Please move your file some place on your local drive and practice changing the path to it.
+
+Let's read in the csv now, and check the dimensions.
+
+
+
+```{r, eval=FALSE}
+# We will need these libraries in the class.
+library(dplyr)
+library(stringr)
+library(tidyr)
+
+restaurant_file<-'C:/Users/SChildress/Documents/GitHub/intro-dplyr/data/king_county_restaurant_inspections.csv'
+rest_df<-read.csv(restaurant_file, fileEncoding = 'UTF-8-BOM')
+# find the dimensions of the data frame
+dim(rest_df)
+#look at the first five rows
+head(rest_df)
+#what are the column names
+colnames(rest_df)
+
+```
+
+
+Each row in the data represents a note about a particular restaurant on a particular date.
+There may be multiple notes from the same restaurant on the same date. The data has 267,167 notes, of 15 variables.
+
+### Tidy data is data in whcih:
+
+Every column is variable.
+Every row is an observation.
+Every cell is a single value.
+
+
+***Is this data tidy? How would you shape or aggregate this data?***
+
+
+
+

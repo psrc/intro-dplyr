@@ -1,0 +1,42 @@
+---
+title: "Data Wrangling Interlude"
+author: "Suzanne Childress"
+date: "1/7/2021"
+output:
+  html_document:
+    highlight: textmate
+    theme: cosmo
+  pdf_document: default
+---
+
+
+Before I do more analysis, I want to transform the data so that each row is a restaurant, instead of a note about the restaurant.
+
+I decided what I'd like to extract is only the inspections not the consultations, the score of the latest inspection, and the worst code violation on that date for each restaurant on the list. 
+
+This part may feel advanced so bear with me please.
+
+
+```{r, eval=FALSE}
+
+# I want to find out the unique values of the type of inspections so I can figure out the 
+# what a regular inspection is called .
+
+unique(rest_df$TYPE_INSPECTION)
+
+glimpse(rest_df)
+# The DATE_INSPECTION FIELD is a factor, but we want it to be a date so we filter on it.
+
+rest_df <- rest_df %>% mutate(DATE_INSP_FORMAT=as.Date(word(as.character(DATE_INSPECTION), 1)))
+
+# Pesky NAs!!!!!!!!!
+rest_df<-rest_df %>% dplyr::mutate(VIOLATIONPOINTS = replace_na(VIOLATIONPOINTS, 0))
+
+# Now let's filter the data to get one row per restaurant, with the worst violation on the # latest date.
+rest_df_filtered <- rest_df %>% filter(TYPE_INSPECTION=='Routine Inspection/Field Review') %>%
+                    group_by(NAME) %>% 
+                    filter(DATE_INSP_FORMAT == max(DATE_INSP_FORMAT)) %>% 
+                    slice(which.max(VIOLATIONPOINTS))
+
+
+```

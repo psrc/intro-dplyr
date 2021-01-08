@@ -1,0 +1,42 @@
+---
+title: "Now let's play with the data"
+author: "Suzanne Childress"
+date: "1/7/2021"
+output:
+  html_document:
+    highlight: textmate
+    theme: cosmo
+  pdf_document: default
+---
+Now that we have the data formatted where each row is the latest single inspection record for a restaurant, let's see what we can find out!
+
+
+
+```{r, eval=FALSE}
+#05- play-with-data
+glimpse(rest_df_filtered)
+
+#How do the inspection score vary by city?
+
+# Average and Max Score by City
+score_by_city<-rest_df_filtered %>% group_by(CITY) %>% summarize(avg_score= mean(SCORE_INSPECTION),
+                                                                 max_score = max(SCORE_INSPECTION),
+                                                                 n_rests = n())
+                                                                 
+
+# What is the info on the restaurant with the worst score by city?
+
+worst_by_city<-rest_df_filtered %>% group_by(CITY) %>% top_n(1, SCORE_INSPECTION)
+
+# What was the data on the restaurant I liked?
+
+bizzaro_df_filtered <- rest_df_filtered %>% dplyr::filter(str_detect(NAME, 'BIZZARRO'))
+
+```
+
+Your turn, ideas---
+1. Find your a restaurant of your choice and get the latest data.
+2. See if there is a relationship between the RISK category and the SCORE_INSPECTION
+3. See if there is a relationship between the SEAT_CAP and the SCORE_INSPECTION
+4. Find out which VIOLATIONDESCR is associated with the the highest SCORE_INSPECTION
+5. Or whatever you'd like!!!
