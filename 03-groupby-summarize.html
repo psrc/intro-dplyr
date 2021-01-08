@@ -312,6 +312,8 @@ $(document).ready(function () {
 </div>
 
 
+<div id="aggregating-data" class="section level2">
+<h2>Aggregating data</h2>
 <p>Usually when working with data, we want to aggregate it to extract meaning. The most common ways to aggregate are to count, sum, min or max.</p>
 <pre class="r"><code># Let&#39;s count the records in our data.
 
@@ -322,7 +324,11 @@ rest_df_count &lt;- rest_df %&gt;% count()
 rest_df_count2 &lt;- rest_df %&gt;% count(NAME)
 
 rest_df %&gt;% count(NAME,sort=TRUE)</code></pre>
-<p>Many times we need to sum data. summarise() creates a new data frame. It will have one (or more) rows for each combination of grouping variables; if there are no grouping variables, the output will have a single row summarising all observations in the input. It will contain one column for each grouping variable and one column for each of the summary statistics that you have specified.</p>
+</div>
+<div id="summarzing-and-grouping" class="section level2">
+<h2>Summarzing and Grouping</h2>
+<p>Many times we need to sum data columns. We also want to group things into categories.</p>
+<p>summarise() creates a new data frame. It will have one (or more) rows for each combination of grouping variables; if there are no grouping variables, the output will have a single row summarising all observations in the input. It will contain one column for each grouping variable and one column for each of the summary statistics that you have specified.</p>
 <pre class="r"><code># Let&#39;s sum the inspection scores.
 
 rest_df %&gt;% summarize(total_points=(sum(SCORE_INSPECTION, na.rm=TRUE)))</code></pre>
@@ -330,6 +336,7 @@ rest_df %&gt;% summarize(total_points=(sum(SCORE_INSPECTION, na.rm=TRUE)))</code
 <pre class="r"><code># Let&#39;s sum the inspection scores.
 
 rest_df %&gt;% group_by(NAME)%&gt;%summarize(rest_points=(mean(SCORE_INSPECTION, na.rm=TRUE)))</code></pre>
+</div>
 
 
 

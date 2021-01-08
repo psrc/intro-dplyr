@@ -9,6 +9,7 @@ output:
   pdf_document: default
 ---
 
+## Aggregating data
 
 Usually when working with data, we want to aggregate it to extract meaning. The most common ways to aggregate are to count, sum, min or max.
 
@@ -26,7 +27,9 @@ rest_df %>% count(NAME,sort=TRUE)
 
 ```
 
-Many times we need to sum data.
+## Summarzing and Grouping
+Many times we need to sum data columns. We also want to group things into categories.
+
 summarise() creates a new data frame. It will have one (or more) rows for each combination of grouping variables; if there are no grouping variables, the output will have a single row summarising all observations in the input. It will contain one column for each grouping variable and one column for each of the summary statistics that you have specified.
 
 ```{r, eval=FALSE}
