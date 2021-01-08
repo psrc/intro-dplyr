@@ -10,7 +10,7 @@ navbar:
     - text: "Basic Verbs"
       href: 02-basic-verbs.html
     - text: "Grouping and Summarizing"
-      href: 03-group-by-summarize.html
+      href: 03-groupby-summarize.html
     - text: "Data Wrangling"
       href: 04-data-wrangle.html
     - text: "Playing with the Data"
