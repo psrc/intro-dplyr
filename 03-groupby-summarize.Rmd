@@ -1,7 +1,7 @@
 ---
 title: "Grouping and Summarizing"
 author: "Suzanne Childress"
-date: "1/7/2021"
+date: "1/6/2021"
 output:
   html_document:
     highlight: textmate
