@@ -65,7 +65,7 @@ These all combine naturally with group_by() which allows you to perform any oper
 
 1.  [King County Restaurant Data](01-rest-data.html)
 2.  [Basic Verbs: Mutate, Select, Filter Arrange](02-basic-verbs.html)
-3.  [Grouping and Summarizing](03-group-by-summarize.html)
+3.  [Grouping and Summarizing](03-summarize-groupby.html)
 4.  [Wrangling our Restaurant Data](04-data-wrangle.html)
 5.  [Playing with the Data](05-play-with-data.html)
 6.  [Appendix: Code Results](06-results-running.html)

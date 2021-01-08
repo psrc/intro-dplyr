@@ -27,7 +27,7 @@ rest_df %>% count(NAME,sort=TRUE)
 
 ```
 
-## Summarzing and Grouping
+## Summarizing and Grouping
 Many times we need to sum data columns. We also want to group things into categories.
 
 summarise() creates a new data frame. It will have one (or more) rows for each combination of grouping variables; if there are no grouping variables, the output will have a single row summarising all observations in the input. It will contain one column for each grouping variable and one column for each of the summary statistics that you have specified.
@@ -36,18 +36,7 @@ summarise() creates a new data frame. It will have one (or more) rows for each c
 # Let's sum the inspection scores.
 
 rest_df %>% summarize(total_points=(sum(SCORE_INSPECTION, na.rm=TRUE)))
-
-```
-
-Frequently we also want to group data and summarize it:
-
-
-```{r, eval=FALSE}
-# Let's sum the inspection scores.
-
+#Frequently we also want to group data and summarize it:
 rest_df %>% group_by(NAME)%>%summarize(rest_points=(mean(SCORE_INSPECTION, na.rm=TRUE)))
-
 ```
-
-
 

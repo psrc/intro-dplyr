@@ -11,9 +11,8 @@
 
 <meta name="author" content="Suzanne Childress" />
 
-<meta name="date" content="2020-12-23" />
 
-<title>Intro to dplyr</title>
+<title>Grouping and Summarizing</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -306,54 +305,35 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Intro to dplyr</h1>
+<h1 class="title toc-ignore">Grouping and Summarizing</h1>
 <h4 class="author">Suzanne Childress</h4>
-<h4 class="date">12/23/2020</h4>
+<h4 class="date">1/6/2021</h4>
 
 </div>
 
 
-<div id="prerequisites" class="section level1">
-<h1>Prerequisites</h1>
-<p>R and the RStudio IDE are required.</p>
-<p>Please install the following libraries by running the following code snippet in the console of your RStudio IDE. Ignore any warnings regarding Rtools and if you are asked to install from sources which needs compilation, click ‘No’.</p>
-<p>install.packages(c(“tidyr”)) install.packages(c(“stringr”)) install.packages(c(“dplyr”))</p>
-<p>The code that is used in this class can be found at <a href="https://github.com/psrc/intro-dplyr/scripts/dplyr_class_script.R">on github here</a></p>
-<p>I recommend opening this script in R studio while the class is going so you can easily follow along.</p>
-<div id="what-is-dplyr" class="section level2">
-<h2>What is dplyr?</h2>
-<p><a href="https://rdrr.io/github/hadley/dplyr/f/vignettes/dplyr.Rmd">From a dplyr vignette</a>:</p>
-<p>When working with data you must:</p>
-<ul>
-<li><p>Figure out what you want to do.</p></li>
-<li><p>Describe those tasks in the form of a computer program.</p></li>
-</ul>
-<p>*Execute the program.</p>
-<p>The dplyr package makes these steps fast and easy:</p>
-<p>By constraining your options, it helps you think about your data manipulation challenges.</p>
-<p>It provides simple “verbs”, functions that correspond to the most common data manipulation tasks, to help you translate your thoughts into code.</p>
-<p>It uses efficient backends, so you spend less time waiting for the computer.</p>
-<p>From <a href="https://dplyr.tidyverse.org/">the tidyverse website</a>:</p>
-<ul>
-<li>mutate() adds new variables that are functions of existing variables</li>
-<li>select() picks variables based on their names.</li>
-<li>filter() picks cases based on their values.</li>
-<li>summarise() reduces multiple values down to a single summary.</li>
-<li>arrange() changes the ordering of the rows.</li>
-</ul>
-<p>These all combine naturally with group_by() which allows you to perform any operation “by group”. You can learn more about them in vignette(“dplyr”). As well as these single-table verbs, dplyr also provides a variety of two-table verbs, which you can learn about in vignette(“two-table”).</p>
+<div id="aggregating-data" class="section level2">
+<h2>Aggregating data</h2>
+<p>Usually when working with data, we want to aggregate it to extract meaning. The most common ways to aggregate are to count, sum, min or max.</p>
+<pre class="r"><code># Let&#39;s count the records in our data.
+
+rest_df_count &lt;- rest_df %&gt;% count()
+
+# Now let&#39;s count the number of observations for each restaurant.
+
+rest_df_count2 &lt;- rest_df %&gt;% count(NAME)
+
+rest_df %&gt;% count(NAME,sort=TRUE)</code></pre>
 </div>
-<div id="topics-in-the-class" class="section level2">
-<h2>Topics in the Class</h2>
-<ol style="list-style-type: decimal">
-<li><a href="01-rest-data.html">King County Restaurant Data</a></li>
-<li><a href="02-basic-verbs.html">Basic Verbs: Mutate, Select, Filter Arrange</a></li>
-<li><a href="03-summarize-groupby.html">Grouping and Summarizing</a></li>
-<li><a href="04-data-wrangle.html">Wrangling our Restaurant Data</a></li>
-<li><a href="05-play-with-data.html">Playing with the Data</a></li>
-<li><a href="06-results-running.html">Appendix: Code Results</a></li>
-</ol>
-</div>
+<div id="summarizing-and-grouping" class="section level2">
+<h2>Summarizing and Grouping</h2>
+<p>Many times we need to sum data columns. We also want to group things into categories.</p>
+<p>summarise() creates a new data frame. It will have one (or more) rows for each combination of grouping variables; if there are no grouping variables, the output will have a single row summarising all observations in the input. It will contain one column for each grouping variable and one column for each of the summary statistics that you have specified.</p>
+<pre class="r"><code># Let&#39;s sum the inspection scores.
+
+rest_df %&gt;% summarize(total_points=(sum(SCORE_INSPECTION, na.rm=TRUE)))
+#Frequently we also want to group data and summarize it:
+rest_df %&gt;% group_by(NAME)%&gt;%summarize(rest_points=(mean(SCORE_INSPECTION, na.rm=TRUE)))</code></pre>
 </div>
 
 
