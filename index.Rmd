@@ -30,19 +30,8 @@ I recommend opening this script in R studio while the class is going so you can 
 
 [From a dplyr vignette](https://rdrr.io/github/hadley/dplyr/f/vignettes/dplyr.Rmd):
 
-When working with data you must:
 
-* Figure out what you want to do.
-
-* Describe those tasks in the form of a computer program.
-
-*Execute the program.
-
-The dplyr package makes these steps fast and easy:
-
-By constraining your options, it helps you think about your data manipulation challenges.
-
-It provides simple “verbs”, functions that correspond to the most common data manipulation tasks, to help you translate your thoughts into code.
+dplyr provides simple “verbs”, functions that correspond to the most common data manipulation tasks, to help you translate your thoughts into code.
 
 It uses efficient backends, so you spend less time waiting for the computer.
 

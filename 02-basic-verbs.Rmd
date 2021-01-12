@@ -11,7 +11,7 @@ output:
 
 # What in the world is %>%? Understanding pipes. 
 
-magrittr pipes look like this: %>%. They are a way of calling functions that easily pass the result of one function into another. It makes your code cleaner, and it kind of feels like you're reading a sentence that expalins what you are doing to the data.
+magrittr pipes look like this: %>%. They are a way of calling functions that easily pass the result of one function into another. It makes your code cleaner, and it kind of feels like you're reading a sentence that explains what you are doing to the data.
 
 Let's look at example over in this [blog](https://blog.revolutionanalytics.com/2014/07/magrittr-simplifying-r-code-with-pipes.html).
 
@@ -35,11 +35,11 @@ bizzaro_df <- rest_df %>% dplyr::filter(str_detect(NAME, 'BIZZARRO'))
 
 # you can stack the two operations together; like nesting a function
 
-less_col_biz <- rest_df %>% select('NAME', 'VIOLATIONTYPE', 'VIOLATIONDESCR') %>%  dplyr::filter(str_detect(NAME, 'BIZZARRO'))
+less_col_biz <- rest_df %>% select('NAME', 'VIOLATIONTYPE', 'VIOLATIONDESCR','SCORE_INSPECTION" %>%  dplyr::filter(str_detect(NAME, 'BIZZARRO'))
 
 # arrange() changes the ordering of the rows.
 # the default is ascending order, if you want descending use: desc
-ordered_df <- less_col_red%>% arrange(desc(SCORE_INSPECTION))
+ordered_df <- less_col_biz%>% arrange(desc(SCORE_INSPECTION))
 ```
 
 Now it's your turn to try, try to filter a restaurant you know, and select three columns you are interested in, then order descending by the inspection score.

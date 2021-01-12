@@ -43,7 +43,7 @@ colnames(rest_df)
 Each row in the data represents a note about a particular restaurant on a particular date.
 There may be multiple notes from the same restaurant on the same date. The data has 267,167 notes, of 15 variables.
 
-### Tidy data is data in whcih:
+### Tidy data is data in which:
 
 Every column is variable.
 Every row is an observation.
