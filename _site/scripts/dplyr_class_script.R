@@ -42,6 +42,11 @@ head(less_col_biz)
 ordered_df <- bizzaro_df%>% arrange(desc(SCORE_INSPECTION))
 head(ordered_df)
 
+#In class exercise 1: 
+  
+#Now it's your turn to try, try to filter a restaurant you know, 
+#and select three columns you are interested in, then order descending by the inspection score.
+  
 #### Group by and Summarize ####
 
 # Let's count the records in our data.
@@ -82,7 +87,7 @@ rest_df_filtered <- rest_df %>% filter(TYPE_INSPECTION=='Routine Inspection/Fiel
 #### Playing with the Data ####
 glimpse(rest_df_filtered)
 
-#How do the inspection score vary by city?
+#How do the inspection scores vary by city?
 
 # Average and Max Score by City
 score_by_city<-rest_df_filtered %>% group_by(CITY) %>% summarize(avg_score= mean(SCORE_INSPECTION),
