@@ -19,8 +19,12 @@ R and the RStudio IDE are required.
 Please install the following libraries by running the following code snippet in the console of your RStudio IDE. Ignore any warnings regarding Rtools and if you are asked to install from sources which needs compilation, click 'No'.
 
 install.packages(c("tidyr"))
+
 install.packages(c("stringr"))
+
 install.packages(c("dplyr"))
+
+install.packages(c("ggplot2"))
 
 The code that is used in this class can be found at [on github here](https://github.com/psrc/intro-dplyr/scripts/dplyr_class_script.R)
 

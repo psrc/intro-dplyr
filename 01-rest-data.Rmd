@@ -12,7 +12,7 @@ output:
 
 # Restaurant Data
 ## Let's get read in some fun data to play round with.
-I found this data from Seattle open data portal about [Restaurant Inspections](https://gis-kingcounty.opendata.arcgis.com/datasets/9b1f71cb62c040ad9537e3c7e8578ed5_857/data?geometry=-127.218%2C46.233%2C-116.386%2C48.828).
+Polina found this data from Seattle open data portal about [Restaurant Inspections](https://gis-kingcounty.opendata.arcgis.com/datasets/9b1f71cb62c040ad9537e3c7e8578ed5_857/data?geometry=-127.218%2C46.233%2C-116.386%2C48.828).
 
 I moved the data locally so it would be faster to read in. The file is about 50 MB.
 I like to put file locations at the top of the code so people don't have to hunt to find them when
@@ -27,6 +27,7 @@ Let's read in the csv now, and check the dimensions.
 library(dplyr)
 library(stringr)
 library(tidyr)
+library(ggplot)
 
 restaurant_file<-'C:/Users/SChildress/Documents/GitHub/intro-dplyr/data/king_county_restaurant_inspections.csv'
 rest_df<-read.csv(restaurant_file, fileEncoding = 'UTF-8-BOM')
@@ -51,6 +52,9 @@ Every cell is a single value.
 
 
 ***Is this data tidy? How would you shape or aggregate this data?***
+
+Let's look at some examples of non-tidy data and discusses pivot_wider and pivot_longer:
+https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html
 
 
 

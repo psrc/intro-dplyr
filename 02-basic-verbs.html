@@ -282,7 +282,7 @@ $(document).ready(function () {
   <a href="02-basic-verbs.html">Basic Verbs</a>
 </li>
 <li>
-  <a href="03-group-by-summarize.html">Grouping and Summarizing</a>
+  <a href="03-summarize-groupby.html">Grouping and Summarizing</a>
 </li>
 <li>
   <a href="04-data-wrangle.html">Data Wrangling</a>
@@ -314,7 +314,7 @@ $(document).ready(function () {
 
 <div id="what-in-the-world-is-understanding-pipes." class="section level1">
 <h1>What in the world is %&gt;%? Understanding pipes.</h1>
-<p>magrittr pipes look like this: %&gt;%. They are a way of calling functions that easily pass the result of one function into another. It makes your code cleaner, and it kind of feels like you’re reading a sentence that expalins what you are doing to the data.</p>
+<p>magrittr pipes look like this: %&gt;%. They are a way of calling functions that easily pass the result of one function into another. It makes your code cleaner, and it kind of feels like you’re reading a sentence that explains what you are doing to the data.</p>
 <p>Let’s look at example over in this <a href="https://blog.revolutionanalytics.com/2014/07/magrittr-simplifying-r-code-with-pipes.html">blog</a>.</p>
 </div>
 <div id="now-lets-learn-about-several-basic-verbs-mutate-select-filter-and-arrange." class="section level1">
@@ -334,11 +334,12 @@ bizzaro_df &lt;- rest_df %&gt;% dplyr::filter(str_detect(NAME, &#39;BIZZARRO&#39
 
 # you can stack the two operations together; like nesting a function
 
-less_col_biz &lt;- rest_df %&gt;% select(&#39;NAME&#39;, &#39;VIOLATIONTYPE&#39;, &#39;VIOLATIONDESCR&#39;) %&gt;%  dplyr::filter(str_detect(NAME, &#39;BIZZARRO&#39;))
+less_col_biz &lt;- rest_df %&gt;% select(&#39;NAME&#39;, &#39;VIOLATIONTYPE&#39;, &#39;VIOLATIONDESCR&#39;,&#39;SCORE_INSPECTION&quot; %&gt;%  dplyr::filter(str_detect(NAME, &#39;BIZZARRO&#39;))
 
 # arrange() changes the ordering of the rows.
 # the default is ascending order, if you want descending use: desc
-ordered_df &lt;- less_col_red%&gt;% arrange(desc(SCORE_INSPECTION))</code></pre>
+ordered_df &lt;- less_col_biz%&gt;% arrange(desc(SCORE_INSPECTION))</code></pre>
+<p>In class exercise 1:</p>
 <p>Now it’s your turn to try, try to filter a restaurant you know, and select three columns you are interested in, then order descending by the inspection score.</p>
 </div>
 

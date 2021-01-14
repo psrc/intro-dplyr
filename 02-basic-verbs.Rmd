@@ -42,4 +42,6 @@ less_col_biz <- rest_df %>% select('NAME', 'VIOLATIONTYPE', 'VIOLATIONDESCR','SC
 ordered_df <- less_col_biz%>% arrange(desc(SCORE_INSPECTION))
 ```
 
+In class exercise 1: 
+
 Now it's your turn to try, try to filter a restaurant you know, and select three columns you are interested in, then order descending by the inspection score.

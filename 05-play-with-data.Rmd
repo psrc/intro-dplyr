@@ -14,6 +14,25 @@ Now that we have the data formatted where each row is the latest single inspecti
 
 ```{r, eval=FALSE}
 #05- play-with-data
+
+unique(rest_df$TYPE_INSPECTION)
+
+glimpse(rest_df)
+# The DATE_INSPECTION FIELD is a factor, but we want it to be a date so we filter on it.
+
+rest_df <- rest_df %>% mutate(DATE_INSP_FORMAT=as.Date(word(as.character(DATE_INSPECTION), 1)))
+
+#let's check to see that now the DATE_INSP_FORMAT field looks like a date and is okay
+glimpse(rest_df)
+
+rest_df<-rest_df %>% dplyr::mutate(VIOLATIONPOINTS = replace_na(VIOLATIONPOINTS, 0))
+
+rest_df_filtered <- rest_df %>% filter(TYPE_INSPECTION=='Routine Inspection/Field Review') %>%
+  group_by(NAME) %>% 
+  filter(DATE_INSP_FORMAT == max(DATE_INSP_FORMAT)) %>% 
+  slice(which.max(VIOLATIONPOINTS))
+
+#### Playing with the Data ####
 glimpse(rest_df_filtered)
 
 #How do the inspection score vary by city?
@@ -22,21 +41,50 @@ glimpse(rest_df_filtered)
 score_by_city<-rest_df_filtered %>% group_by(CITY) %>% summarize(avg_score= mean(SCORE_INSPECTION),
                                                                  max_score = max(SCORE_INSPECTION),
                                                                  n_rests = n())
-                                                                 
+
+
+score_by_city
+
+# some of the cities have very few restaurants; let's remove those
+
+score_city_sufficient <- score_by_city %>% filter(n_rests>50)
+
+#dplyr works great with ggplot to make plots.  
+
+ggplot(data=score_city_sufficient, aes(x=CITY, y=avg_score)) +
+  geom_bar(stat="identity")+theme(axis.text.x = element_text(angle = 90))+
+  ggtitle("Average Restaurant Inspection Score by City") +
+  xlab("City") + ylab("Average Restaurant Score")
+
+# does the average score just correlate with number of restaurants?
+ggplot(data=score_city_sufficient, aes(x=n_rests, y=avg_score)) +
+  geom_point()+ggtitle("Average Restaurant Inspection Score by Number of Restaurants") +
+  xlab("Number of Restaurants") + ylab("Average Restaurant Score")
+
+# Seattle throws everything off  
+score_city_sufficient_not_too_many <- score_city_sufficient %>% filter(n_rests<100)
+ggplot(data=score_city_sufficient_not_too_many, aes(x=n_rests, y=avg_score)) +
+  geom_point()+ggtitle("Average Restaurant Inspection Score by Number of Restaurants") +
+  xlab("Number of Restaurants") + ylab("Average Restaurant Score")
+
 
 # What is the info on the restaurant with the worst score by city?
 
 worst_by_city<-rest_df_filtered %>% group_by(CITY) %>% top_n(1, SCORE_INSPECTION)
 
+worst_by_city
 # What was the data on the restaurant I liked?
 
 bizzaro_df_filtered <- rest_df_filtered %>% dplyr::filter(str_detect(NAME, 'BIZZARRO'))
+bizzaro_df_filtered
+
 
 ```
 
-Your turn, ideas---
+############### Exercises ################
 1. Find your a restaurant of your choice and get the latest data.
-2. See if there is a relationship between the RISK category and the SCORE_INSPECTION
-3. See if there is a relationship between the SEAT_CAP and the SCORE_INSPECTION
-4. Find out which VIOLATIONDESCR is associated with the the highest SCORE_INSPECTION
-5. Or whatever you'd like!!!
+2. Go back to the big dataset and find the worst violation of a restaurant you want.
+3. Make a table that shows grouped RISK category and the average and max SCORE_INSPECTION
+4. Make a table that shows grouped SEAT_CAP and the average and max SCORE_INSPECTION
+5. Find out which VIOLATIONDESCR is associated with the the highest SCORE_INSPECTION
+6. Make a barplot that shows the maximum inspection score by city.

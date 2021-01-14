@@ -283,7 +283,7 @@ $(document).ready(function () {
   <a href="02-basic-verbs.html">Basic Verbs</a>
 </li>
 <li>
-  <a href="03-group-by-summarize.html">Grouping and Summarizing</a>
+  <a href="03-summarize-groupby.html">Grouping and Summarizing</a>
 </li>
 <li>
   <a href="04-data-wrangle.html">Data Wrangling</a>
@@ -317,13 +317,14 @@ $(document).ready(function () {
 <h1>Restaurant Data</h1>
 <div id="lets-get-read-in-some-fun-data-to-play-round-with." class="section level2">
 <h2>Let’s get read in some fun data to play round with.</h2>
-<p>I found this data from Seattle open data portal about <a href="https://gis-kingcounty.opendata.arcgis.com/datasets/9b1f71cb62c040ad9537e3c7e8578ed5_857/data?geometry=-127.218%2C46.233%2C-116.386%2C48.828">Restaurant Inspections</a>.</p>
+<p>Polina found this data from Seattle open data portal about <a href="https://gis-kingcounty.opendata.arcgis.com/datasets/9b1f71cb62c040ad9537e3c7e8578ed5_857/data?geometry=-127.218%2C46.233%2C-116.386%2C48.828">Restaurant Inspections</a>.</p>
 <p>I moved the data locally so it would be faster to read in. The file is about 50 MB. I like to put file locations at the top of the code so people don’t have to hunt to find them when reusing your code. Please move your file some place on your local drive and practice changing the path to it.</p>
 <p>Let’s read in the csv now, and check the dimensions.</p>
 <pre class="r"><code># We will need these libraries in the class.
 library(dplyr)
 library(stringr)
 library(tidyr)
+library(ggplot)
 
 restaurant_file&lt;-&#39;C:/Users/SChildress/Documents/GitHub/intro-dplyr/data/king_county_restaurant_inspections.csv&#39;
 rest_df&lt;-read.csv(restaurant_file, fileEncoding = &#39;UTF-8-BOM&#39;)
@@ -334,10 +335,11 @@ head(rest_df)
 #what are the column names
 colnames(rest_df)</code></pre>
 <p>Each row in the data represents a note about a particular restaurant on a particular date. There may be multiple notes from the same restaurant on the same date. The data has 267,167 notes, of 15 variables.</p>
-<div id="tidy-data-is-data-in-whcih" class="section level3">
-<h3>Tidy data is data in whcih:</h3>
+<div id="tidy-data-is-data-in-which" class="section level3">
+<h3>Tidy data is data in which:</h3>
 <p>Every column is variable. Every row is an observation. Every cell is a single value.</p>
 <p><strong><em>Is this data tidy? How would you shape or aggregate this data?</em></strong></p>
+<p>Let’s look at some examples of non-tidy data and discusses pivot_wider and pivot_longer: <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html" class="uri">https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html</a></p>
 </div>
 </div>
 </div>

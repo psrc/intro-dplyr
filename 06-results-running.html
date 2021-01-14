@@ -282,13 +282,16 @@ $(document).ready(function () {
   <a href="02-basic-verbs.html">Basic Verbs</a>
 </li>
 <li>
-  <a href="03-group-by-summarize.html">Grouping and Summarizing</a>
+  <a href="03-summarize-groupby.html">Grouping and Summarizing</a>
 </li>
 <li>
   <a href="04-data-wrangle.html">Data Wrangling</a>
 </li>
 <li>
   <a href="05-play-with-data.html">Playing with the Data</a>
+</li>
+<li>
+  <a href="06-results-running.html">Appendix: Code Results</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -323,6 +326,8 @@ $(document).ready(function () {
 <pre class="r"><code>library(stringr)
 library(tidyr)</code></pre>
 <pre><code>## Warning: package &#39;tidyr&#39; was built under R version 3.6.3</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 3.6.3</code></pre>
 <pre class="r"><code>#### Restaurant Inspection Data ####
 
 restaurant_file&lt;-&#39;C:/Users/SChildress/Documents/GitHub/intro-dplyr/data/king_county_restaurant_inspections.csv&#39;
@@ -658,6 +663,28 @@ score_by_city&lt;-rest_df_filtered %&gt;% group_by(CITY) %&gt;% summarize(avg_sc
 ##  9 Carnation          0.5          5      26
 ## 10 Clyde Hill         3.25        13       4
 ## # ... with 41 more rows</code></pre>
+<pre class="r"><code># some of the cities have very few restaurants; let&#39;s remove those
+
+score_city_sufficient &lt;- score_by_city %&gt;% filter(n_rests&gt;50)
+
+#dplyr works great with ggplot to make plots.  
+
+ggplot(data=score_city_sufficient, aes(x=CITY, y=avg_score)) +
+  geom_bar(stat=&quot;identity&quot;)+theme(axis.text.x = element_text(angle = 90))+
+  ggtitle(&quot;Average Restaurant Inspection Score by City&quot;) +
+  xlab(&quot;City&quot;) + ylab(&quot;Average Restaurant Score&quot;)</code></pre>
+<p><img src="06-results-running_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code># does the average score just correlate with number of restaurants?
+ggplot(data=score_city_sufficient, aes(x=n_rests, y=avg_score)) +
+  geom_point()+ggtitle(&quot;Average Restaurant Inspection Score by Number of Restaurants&quot;) +
+  xlab(&quot;Number of Restaurants&quot;) + ylab(&quot;Average Restaurant Score&quot;)</code></pre>
+<p><img src="06-results-running_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<pre class="r"><code># Seattle throws everything off  
+score_city_sufficient_not_too_many &lt;- score_city_sufficient %&gt;% filter(n_rests&lt;100)
+ggplot(data=score_city_sufficient_not_too_many, aes(x=n_rests, y=avg_score)) +
+  geom_point()+ggtitle(&quot;Average Restaurant Inspection Score by Number of Restaurants&quot;) +
+  xlab(&quot;Number of Restaurants&quot;) + ylab(&quot;Average Restaurant Score&quot;)</code></pre>
+<p><img src="06-results-running_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
 <pre class="r"><code># What is the info on the restaurant with the worst score by city?
 
 worst_by_city&lt;-rest_df_filtered %&gt;% group_by(CITY) %&gt;% top_n(1, SCORE_INSPECTION)
@@ -694,13 +721,13 @@ bizzaro_df_filtered</code></pre>
 ## #   SCORE_INSPECTION &lt;int&gt;, RESULT_INSPECTION &lt;fct&gt;, VIOLATIONTYPE &lt;fct&gt;,
 ## #   VIOLATIONDESCR &lt;fct&gt;, VIOLATIONPOINTS &lt;dbl&gt;, SEATTLE &lt;chr&gt;,
 ## #   DATE_INSP_FORMAT &lt;date&gt;</code></pre>
-<pre class="r"><code># Your turn, ideas
+<pre class="r"><code>############### Exercises ################
 # 1. Find your a restaurant of your choice and get the latest data.
 # 2. Go back to the big dataset and find the worst violation of a restaurant you want.
-# 3. See if there is a relationship between the RISK category and the SCORE_INSPECTION
-# 4. See if there is a relationship between the SEAT_CAP and the SCORE_INSPECTION
+# 3. Make a table that shows grouped RISK category and the average and max SCORE_INSPECTION
+# 4. Make a table that shows grouped SEAT_CAP and the average and max SCORE_INSPECTION
 # 5. Find out which VIOLATIONDESCR is associated with the the highest SCORE_INSPECTION
-# 6. Or whatever you&#39;d like!!!</code></pre>
+# 6. Make a barplot that shows the maximum inspection score by city.</code></pre>
 
 
 

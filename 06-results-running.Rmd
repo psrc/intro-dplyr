@@ -14,6 +14,7 @@ This shows the results of running all the steps of the class.
 library(dplyr)
 library(stringr)
 library(tidyr)
+library(ggplot2)
 
 
 #### Restaurant Inspection Data ####
@@ -101,7 +102,32 @@ score_by_city<-rest_df_filtered %>% group_by(CITY) %>% summarize(avg_score= mean
                                                                  max_score = max(SCORE_INSPECTION),
                                                                  n_rests = n())
 
+
 score_by_city
+
+# some of the cities have very few restaurants; let's remove those
+
+score_city_sufficient <- score_by_city %>% filter(n_rests>50)
+
+#dplyr works great with ggplot to make plots.  
+
+ggplot(data=score_city_sufficient, aes(x=CITY, y=avg_score)) +
+  geom_bar(stat="identity")+theme(axis.text.x = element_text(angle = 90))+
+  ggtitle("Average Restaurant Inspection Score by City") +
+  xlab("City") + ylab("Average Restaurant Score")
+
+# does the average score just correlate with number of restaurants?
+ggplot(data=score_city_sufficient, aes(x=n_rests, y=avg_score)) +
+  geom_point()+ggtitle("Average Restaurant Inspection Score by Number of Restaurants") +
+  xlab("Number of Restaurants") + ylab("Average Restaurant Score")
+
+# Seattle throws everything off  
+score_city_sufficient_not_too_many <- score_city_sufficient %>% filter(n_rests<100)
+ggplot(data=score_city_sufficient_not_too_many, aes(x=n_rests, y=avg_score)) +
+  geom_point()+ggtitle("Average Restaurant Inspection Score by Number of Restaurants") +
+  xlab("Number of Restaurants") + ylab("Average Restaurant Score")
+
+
 # What is the info on the restaurant with the worst score by city?
 
 worst_by_city<-rest_df_filtered %>% group_by(CITY) %>% top_n(1, SCORE_INSPECTION)
@@ -113,12 +139,13 @@ bizzaro_df_filtered <- rest_df_filtered %>% dplyr::filter(str_detect(NAME, 'BIZZ
 bizzaro_df_filtered
 
 
-# Your turn, ideas
+############### Exercises ################
 # 1. Find your a restaurant of your choice and get the latest data.
 # 2. Go back to the big dataset and find the worst violation of a restaurant you want.
-# 3. See if there is a relationship between the RISK category and the SCORE_INSPECTION
-# 4. See if there is a relationship between the SEAT_CAP and the SCORE_INSPECTION
+# 3. Make a table that shows grouped RISK category and the average and max SCORE_INSPECTION
+# 4. Make a table that shows grouped SEAT_CAP and the average and max SCORE_INSPECTION
 # 5. Find out which VIOLATIONDESCR is associated with the the highest SCORE_INSPECTION
-# 6. Or whatever you'd like!!!
+# 6. Make a barplot that shows the maximum inspection score by city.
+
 
 ```

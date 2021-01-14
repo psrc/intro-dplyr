@@ -283,7 +283,7 @@ $(document).ready(function () {
   <a href="02-basic-verbs.html">Basic Verbs</a>
 </li>
 <li>
-  <a href="03-groupby-summarize.html">Grouping and Summarizing</a>
+  <a href="03-summarize-groupby.html">Grouping and Summarizing</a>
 </li>
 <li>
   <a href="04-data-wrangle.html">Data Wrangling</a>
@@ -317,21 +317,16 @@ $(document).ready(function () {
 <h1>Prerequisites</h1>
 <p>R and the RStudio IDE are required.</p>
 <p>Please install the following libraries by running the following code snippet in the console of your RStudio IDE. Ignore any warnings regarding Rtools and if you are asked to install from sources which needs compilation, click ‘No’.</p>
-<p>install.packages(c(“tidyr”)) install.packages(c(“stringr”)) install.packages(c(“dplyr”))</p>
+<p>install.packages(c(“tidyr”))</p>
+<p>install.packages(c(“stringr”))</p>
+<p>install.packages(c(“dplyr”))</p>
+<p>install.packages(c(“ggplot2”))</p>
 <p>The code that is used in this class can be found at <a href="https://github.com/psrc/intro-dplyr/scripts/dplyr_class_script.R">on github here</a></p>
 <p>I recommend opening this script in R studio while the class is going so you can easily follow along.</p>
 <div id="what-is-dplyr" class="section level2">
 <h2>What is dplyr?</h2>
 <p><a href="https://rdrr.io/github/hadley/dplyr/f/vignettes/dplyr.Rmd">From a dplyr vignette</a>:</p>
-<p>When working with data you must:</p>
-<ul>
-<li><p>Figure out what you want to do.</p></li>
-<li><p>Describe those tasks in the form of a computer program.</p></li>
-</ul>
-<p>*Execute the program.</p>
-<p>The dplyr package makes these steps fast and easy:</p>
-<p>By constraining your options, it helps you think about your data manipulation challenges.</p>
-<p>It provides simple “verbs”, functions that correspond to the most common data manipulation tasks, to help you translate your thoughts into code.</p>
+<p>dplyr provides simple “verbs”, functions that correspond to the most common data manipulation tasks, to help you translate your thoughts into code.</p>
 <p>It uses efficient backends, so you spend less time waiting for the computer.</p>
 <p>From <a href="https://dplyr.tidyverse.org/">the tidyverse website</a>:</p>
 <ul>
