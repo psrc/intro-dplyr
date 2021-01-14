@@ -15,22 +15,6 @@ Now that we have the data formatted where each row is the latest single inspecti
 ```{r, eval=FALSE}
 #05- play-with-data
 
-unique(rest_df$TYPE_INSPECTION)
-
-glimpse(rest_df)
-# The DATE_INSPECTION FIELD is a factor, but we want it to be a date so we filter on it.
-
-rest_df <- rest_df %>% mutate(DATE_INSP_FORMAT=as.Date(word(as.character(DATE_INSPECTION), 1)))
-
-#let's check to see that now the DATE_INSP_FORMAT field looks like a date and is okay
-glimpse(rest_df)
-
-rest_df<-rest_df %>% dplyr::mutate(VIOLATIONPOINTS = replace_na(VIOLATIONPOINTS, 0))
-
-rest_df_filtered <- rest_df %>% filter(TYPE_INSPECTION=='Routine Inspection/Field Review') %>%
-  group_by(NAME) %>% 
-  filter(DATE_INSP_FORMAT == max(DATE_INSP_FORMAT)) %>% 
-  slice(which.max(VIOLATIONPOINTS))
 
 #### Playing with the Data ####
 glimpse(rest_df_filtered)

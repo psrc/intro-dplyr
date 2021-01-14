@@ -315,22 +315,6 @@ $(document).ready(function () {
 <p>Now that we have the data formatted where each row is the latest single inspection record for a restaurant, let’s see what we can find out!</p>
 <pre class="r"><code>#05- play-with-data
 
-unique(rest_df$TYPE_INSPECTION)
-
-glimpse(rest_df)
-# The DATE_INSPECTION FIELD is a factor, but we want it to be a date so we filter on it.
-
-rest_df &lt;- rest_df %&gt;% mutate(DATE_INSP_FORMAT=as.Date(word(as.character(DATE_INSPECTION), 1)))
-
-#let&#39;s check to see that now the DATE_INSP_FORMAT field looks like a date and is okay
-glimpse(rest_df)
-
-rest_df&lt;-rest_df %&gt;% dplyr::mutate(VIOLATIONPOINTS = replace_na(VIOLATIONPOINTS, 0))
-
-rest_df_filtered &lt;- rest_df %&gt;% filter(TYPE_INSPECTION==&#39;Routine Inspection/Field Review&#39;) %&gt;%
-  group_by(NAME) %&gt;% 
-  filter(DATE_INSP_FORMAT == max(DATE_INSP_FORMAT)) %&gt;% 
-  slice(which.max(VIOLATIONPOINTS))
 
 #### Playing with the Data ####
 glimpse(rest_df_filtered)
