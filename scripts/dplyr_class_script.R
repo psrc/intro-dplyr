@@ -3,8 +3,17 @@ library(stringr)
 library(tidyr)
 library(ggplot2)
 
+#https://github.com/psrc/intro-dplyr/blob/main/scripts/dplyr_class_script.R
+
+#https://psrc.github.io/intro-dplyr/index.html
+
+#T:\2021January\suzanne\'
+
+
 
 #### Restaurant Inspection Data ####
+
+
 
 restaurant_file<-'C:/Users/SChildress/Documents/GitHub/intro-dplyr/data/king_county_restaurant_inspections.csv'
 rest_df<-read.csv(restaurant_file, fileEncoding = 'UTF-8-BOM')
@@ -14,7 +23,7 @@ dim(rest_df)
 head(rest_df)
 #what are the column names
 colnames(rest_df)
-glimpse(rest_df)
+
 
 
 #### Basic dplyr verbs ####
@@ -61,6 +70,12 @@ head(rest_df_count2)
 
 rest_df_count_sort<-rest_df %>% count(NAME,sort=TRUE)
 head(rest_df_count_sort)
+
+# Let's sum the inspection scores.
+
+rest_df %>% summarize(total_points=(sum(SCORE_INSPECTION, na.rm=TRUE)))
+#Frequently we also want to group data and summarize it:
+rest_df %>% group_by(NAME)%>%summarize(rest_points=(mean(SCORE_INSPECTION, na.rm=TRUE)))
 
 
 #### Data Wrangling ####
